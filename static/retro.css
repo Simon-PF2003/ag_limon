@@ -60,6 +60,7 @@ body.arcade-machine::before {
       #FF6600 66%,
       #CC0000 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
