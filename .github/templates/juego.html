@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ahorcado Retro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='retro.css') }}">
+</head>
+<body class="arcade-machine">
+  <div class="screen-window">
+    <div class="game-frame">
+      <div class="title-bar">
+        <h1 class="titulo-arcade">AHORCADO</h1>
+        <div class="heart-count">
+          <img src="{{ url_for('static', filename='images/corazon.png') }}" alt="Vida" class="heart-icon">
+          <span class="heart-x">×{{ '%02d'|format(intentos) }}</span>
+        </div>
+      </div>
+
+      <div class="game-screen">
+        {% set pure = palabra_a_mostrar.replace(' ', '') %}
+        <div class="word-display {% if pure|length > 7 %}small-font{% endif %}">
+          {{ palabra_a_mostrar }}
+        </div>
+
+        <p class="info"><span class="highlight small">{{ letras_usadas }}</span></p>
+
+        {% if not juego_finalizado %}
+          <form action="{{ url_for('intentar') }}" method="post" class="input-form">
+            <input name="letra" maxlength="1" required autofocus class="input-letra">
+            <button type="submit" class="boton-retro intermedia">PROBAR</button>
+          </form>
+        {% endif %}
+
+        {% if not show_pista %}
+          <form action="{{ url_for('jugar') }}" method="get" class="input-form">
+            <input type="hidden" name="mostrar_pista" value="1">
+            <button type="submit" class="boton-retro facil">PISTA</button>
+          </form>
+        {% else %}
+          <p class="info highlight" id="pista-text">{{ pista or '–' }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
