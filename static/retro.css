@@ -160,11 +160,13 @@ body.arcade-machine::before {
   }
 
   .heart-icon {
+    margin-top: 1rem;
     width: 45px;
     height: 45px;
   }
 
   .heart-count {
+    margin-top: 1rem;
     right: 18px;
   }
 
