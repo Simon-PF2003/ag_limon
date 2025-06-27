@@ -459,13 +459,13 @@ body.arcade-machine::before {
   }
 
   .titulo-arcade {
-    margin-top: 0.5rem;
+    margin-top: 3rem;
     margin-bottom: 0.2rem;
     font-size: 1.6rem;
   }
 
   #menu-arcade {
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .game-screen {
